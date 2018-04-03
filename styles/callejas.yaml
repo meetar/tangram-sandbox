@@ -1,6 +1,7 @@
 # Author: Paitricio Gonzalez Vivo (@patriciogv) - 2016
 
 import:
+    - nextzen-datasource.yaml
     - elevation-stripes.yaml
     - https://tangrams.github.io/blocks/filter/grid.yaml
     - https://tangrams.github.io/blocks/lines/dash.yaml
@@ -68,7 +69,7 @@ layers:
             buildings:
                 color: [0.941,0.925,0.922]
     places:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: 
             all:
                 - { population: { min: 500000 } }

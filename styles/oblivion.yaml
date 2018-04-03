@@ -1,6 +1,7 @@
 ﻿# Author @patriciogv - 2015
 
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/generative/noise.yaml
     - https://tangrams.github.io/blocks/space/screen.yaml
     - https://tangrams.github.io/blocks/space/constant.yaml
@@ -9,13 +10,6 @@ import:
     - https://tangrams.github.io/blocks/geometry/rotation.yaml
     - https://tangrams.github.io/blocks/shapes/cross.yaml
     - https://tangrams.github.io/blocks/functions/zoom.yaml
-
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-JUsa0Gc
 
 textures:
     sem:
@@ -42,7 +36,7 @@ global:
 
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             water:
                 order: global.order
@@ -51,7 +45,7 @@ layers:
                 order: 0
                 color: [0.129, 0.129, 0.129]
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             pol:
                 order: global.order
@@ -60,20 +54,20 @@ layers:
                 order: 0
                 color: [0.129, 0.129, 0.129]
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             area:
                 order: global.order
                 color: [1.000,0.014,0.187]
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             buildings:
                 order: global.order
                 color: '#999'
                 extrude: true
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             lin:

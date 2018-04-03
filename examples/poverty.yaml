@@ -1,7 +1,6 @@
-﻿sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?
+﻿import:
+    - nextzen-datasource.yaml
+sources:
     data:
         type: TopoJSON
         url:  ../styles/data/us-states-10m.json
@@ -183,7 +182,7 @@ styles:
         
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         properties: { width: 3 }
         draw:
             line:

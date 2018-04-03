@@ -1,5 +1,6 @@
 ﻿# Author @patriciogv - 2015
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/global.yaml
     - https://tangrams.github.io/blocks/color/tools.yaml
     - https://tangrams.github.io/blocks/functions/aastep.yaml
@@ -10,13 +11,6 @@ import:
     - https://tangrams.github.io/blocks/generative/random.yaml
     - https://tangrams.github.io/blocks/space/tile.yaml
     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-xOfUOo4
-
 cameras:
     camera:
         type: perspective
@@ -29,20 +23,20 @@ scene:
 
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             simpleGrid:
                 order: global.order
                 color: [0.362,0.362,0.362]
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             lin:
                 order: global.order
                 color: [0.703,0.703,0.703]
                 width: 1px
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             numericGrid:
                 order: global.order
@@ -54,7 +48,7 @@ layers:
                 width: 2px
                 tile_edges: false
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             roads:
@@ -104,7 +98,7 @@ layers:
                 roads:
                     color: red
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             buildings: 
                 order: global.order

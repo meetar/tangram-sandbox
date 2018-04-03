@@ -1,16 +1,13 @@
 author: Patricio Gonzalez Vivo (@patriciogv) - 2016 
 
 import:
+    - nextzen-datasource.yaml
     - borders.yaml
     - https://tangrams.github.io/blocks/source-elevation.yaml
     - https://tangrams.github.io/blocks/elevation/normal.yaml
 
 sources:
-    mapzen:
-        type: TopoJSON
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-Nhm6Mkg
+    nextzen:
         rasters: [normals-elevation]
         
 layers:

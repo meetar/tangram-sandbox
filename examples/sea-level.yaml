@@ -1,11 +1,7 @@
 ﻿# Author @patriciogv - 2015
 
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-JUsa0Gc
+import:
+    - nextzen-datasource.yaml
 cameras:
     perspective:
         type: perspective
@@ -90,7 +86,7 @@ styles:
                     color.rgb *= vec3(min((worldPosition().z*.001 + .5),1.));
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             textures:
                 order: 0
@@ -100,13 +96,13 @@ layers:
                 color: [0.996, 0.745, 0.086]
                 width: 1.px
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 1
                 color: [0.098, 0.467, 0.867]
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         properties: { width: 3 }
         draw:
@@ -116,7 +112,7 @@ layers:
                 width: [[5, .25px],[15, .5px],[85, 10]]
     
     boundaries:
-        data: { source: mapzen }
+        data: { source: nextzen }
         properties: { width: 3 }
         draw:
             lines:
@@ -124,7 +120,7 @@ layers:
                 color: [0.996, 0.745, 0.086]
                 width: .5px
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { $zoom: { min: 14 } }
         draw:
             polygons:
@@ -137,7 +133,7 @@ layers:
                     style: buildings
                     extrude: function () { return feature.height > 0 || $zoom >= 16; }
     places:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { name: true }
         draw:
             text:

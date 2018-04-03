@@ -1,4 +1,6 @@
-﻿cameras:
+﻿import:
+    - nextzen-datasource.yaml
+cameras:
     perspective:
         type: perspective
         vanishing_point: [0, -500]
@@ -64,31 +66,27 @@ styles:
                 color: |
                     color.rgb *= vec3(min((worldPosition().z*.001 + .5),1.));
     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             dots:
                 order: 2
                 color: '#353535'
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 0
                 color: '#555'
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 1
                 color: '#666'
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         properties: { width: 3 }
         draw:
             lines:
@@ -96,7 +94,7 @@ layers:
                 color: '#777'
                 width: 5
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { $zoom: { min: 14 } }
         draw:
             polygons:

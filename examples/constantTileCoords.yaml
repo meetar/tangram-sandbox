@@ -1,5 +1,7 @@
 ﻿# Author @patriciogv - 2015
 
+import:
+    - nextzen-datasource.yaml
 cameras:
     perspective:
         type: perspective
@@ -118,33 +120,29 @@ styles:
                     color.rgb += vec3(.2)*TileGrid();
                     color.rgb -= grain(gl_FragCoord.xy)*0.3;
                     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?
         url_params:
             api_key: vector-tiles-x4i7gmA
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             grid:
                 order: 2
                 color: '#353535'
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             grid:
                 order: 0
                 color: [0.348,0.348,0.348]
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             area:
                 order: 1
                 color: [1.000,0.014,0.187]
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { $zoom: { min: 10 } }
         draw:
             polygons:
@@ -157,7 +155,7 @@ layers:
                     style: buildings
                     extrude: function () { return feature.height > 0 || $zoom >= 16; }
     roads:
-        data: { source: mapzen, layer: roads }
+        data: { source: nextzen, layer: roads }
         filter: { not: { highway: service, kind: rail } }
         draw:
             flatlines:
@@ -165,7 +163,7 @@ layers:
                 color: [0.83, 0.83, 0.83]
                 width: function () { return Math.log($zoom); }
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         properties: { width: 3 }
         draw:
             lines:

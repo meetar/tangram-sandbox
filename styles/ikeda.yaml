@@ -13,12 +13,12 @@ scene:
 
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             water:
                 color: black
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             lines:
                 order: global.order-top
@@ -28,13 +28,13 @@ layers:
             earth:
                 color: [0.362,0.362,0.362]
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             landuse:
                 color: [0.703,0.703,0.703]
                 width: 1px 
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             roads:
@@ -59,7 +59,7 @@ layers:
             #                     color: black
                         
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             buildings:
                 color: global.pseudoRandomColor

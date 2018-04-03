@@ -1,12 +1,8 @@
-﻿cameras:
+﻿import:
+    - nextzen-datasource.yaml
+cameras:
     perspective:
         type: flat
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-P6dkVl4        
 styles:
     ink:
         shaders:
@@ -89,20 +85,20 @@ styles:
                     
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             ink-polygons:
                 order: 0
                 color: [0.000, 0.027, 0.165]
 
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 1
                 color: [0.871, 0.863, 0.816]
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             ink-lines:
                 order: 3

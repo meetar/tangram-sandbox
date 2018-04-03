@@ -1,16 +1,10 @@
 ﻿# Author @patriciogv - 2015
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/global.yaml
     - https://tangrams.github.io/blocks/geometry/projections.yaml
     - https://tangrams.github.io/blocks/functions/zoom.yaml
     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-P6dkVl4
-
 cameras:
     cam:
         type: perspective
@@ -18,26 +12,26 @@ cameras:
         
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             poly:
                 order: global.order
                 color: '#555'
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             poly:
                 order: global.order
                 color: '#ddd'
     boundaries:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             line:
                 order: global.order
                 color: white
                 width: 1px
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         properties: { width: 3 }
         draw:
             line:
@@ -45,7 +39,7 @@ layers:
                 color: gray
                 width: [[5, .25px],[15, .5px],[85, 10]]
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { $zoom: { min: 14 } }
         draw:
             poly:

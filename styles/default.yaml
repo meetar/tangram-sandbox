@@ -1,16 +1,9 @@
 # Author @patriciogv - 2015
 
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/global.yaml
     - https://tangrams.github.io/blocks/filter/height.yaml
-
-sources:
-    nextzen:
-        type: TopoJSON
-        url: https://tile.nextzen.org/tilezen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: tsINU1vsQnKLU1jjCimtVw
-        max_zoom: 16
 
 cameras:
     cam:

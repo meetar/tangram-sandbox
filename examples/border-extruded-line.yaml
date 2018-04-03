@@ -1,22 +1,21 @@
-﻿cameras:
+﻿import:
+    - nextzen-datasource.yaml
+
+cameras:
     perspective:
         type: perspective
+
 lights:
     directional1:
         type: directional
         direction: [.1, .5, -1]
         diffuse: .7
         ambient: .5
+
 scene:
     background:
         color: white
     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-P6dkVl4
 styles:
     border:
         base: lines
@@ -53,7 +52,7 @@ styles:
                 
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 1

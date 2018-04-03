@@ -1,12 +1,13 @@
 ﻿# Author @patriciogv - 2015
 #
 
-import: 
+import:
+    - nextzen-datasource.yaml
     - press.yaml
 
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 style: animation

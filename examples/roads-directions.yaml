@@ -1,11 +1,7 @@
 ﻿# Author @patriciogv - 2015
 
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-P6dkVl4
+import:
+    - nextzen-datasource.yaml
 cameras:
     perspective:
         type: perspective
@@ -88,25 +84,25 @@ styles:
                     
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 2
                 color: '#353535'
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 0
                 color: '#555'
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 1
                 color: '#666'
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             polygons:
                 order: 50
@@ -117,7 +113,7 @@ layers:
                     style: buildings
                     extrude: function () { return feature.height > 0 || $zoom >= 16; }
     roads:
-        data: { source: mapzen, layer: roads }
+        data: { source: nextzen, layer: roads }
         filter: { not: { highway: service, kind: rail } }
         draw:
             street:
@@ -184,7 +180,7 @@ layers:
                     # let roads sort themselves past zoom 14
                     order: function() { return 6 + feature.sort_rank; }
     road_labels:
-        data: { source: mapzen, layer: roads }
+        data: { source: nextzen, layer: roads }
         filter: { name: true, aeroway: false, tunnel: false, railway: false, not: { kind: rail } }
         highway:
             filter: { kind: highway, $zoom: { min: 5 } }

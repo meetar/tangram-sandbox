@@ -29,35 +29,35 @@ lights:
 
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             water:
                 color: '#88bbee'
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             earth:
                 color: [0.933,0.890,0.839]
     landuse:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             landuse:
                 color: [0.902,0.843,0.757]
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             roads:
                 color: [0.710,0.686,0.647]
                 width: 8
     buildings:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             buildings:
                 color: Style.color.pseudoRandomColor
                 extrude: true
     places:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { name: true }
         draw:
             text:

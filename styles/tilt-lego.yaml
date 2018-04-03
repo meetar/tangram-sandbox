@@ -1,5 +1,7 @@
 ﻿# Author @patriciogv - 2015
 
+import:
+    - nextzen-datasource.yaml
 cameras:
     camera1:
         type: perspective
@@ -164,16 +166,10 @@ styles:
                         color.rgb = vec3(0.400,0.176,0.180);
                     }
                     color *= clamp(0.6+worldPosition().z*0.007,0.,1.);
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-JUsa0Gc
 layers:
     earth:
         data:
-            source: mapzen
+            source: nextzen
             layer: earth
         draw:
             floor:
@@ -181,7 +177,7 @@ layers:
                 color: [0.094,0.573,0.255]
     landuse:
         data:
-            source: mapzen
+            source: nextzen
             layer: landuse
         draw:
             floor:
@@ -190,7 +186,7 @@ layers:
 
     water:
         data:
-            source: mapzen
+            source: nextzen
             layer: water
         draw:
             floor:
@@ -198,7 +194,7 @@ layers:
                 color: [0.016,0.341,0.651]
 
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             roads:
@@ -255,7 +251,7 @@ layers:
                     width: 3
     buildings:
         data:
-            source: mapzen
+            source: nextzen
             layer: buildings
         draw:
             buildings:

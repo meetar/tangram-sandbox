@@ -1,15 +1,10 @@
 ﻿# Author @patriciogv - 2015
 
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/geometry/matrices.yaml
     - https://tangrams.github.io/blocks/geometry/projections.yaml
 
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-JUsa0Gc
 cameras:
     perspective:
         type: flat
@@ -38,13 +33,13 @@ styles:
                     color = mix(color-clouds,color+clouds,light_accumulator_diffuse.r);
 layers:
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             textures:
                 order: 0
                 color: '#555'
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             textures:
                 order: 1

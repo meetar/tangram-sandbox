@@ -1,11 +1,7 @@
 ﻿# Author @patriciogv - 2016
-
+import:
+    - nextzen-datasource.yaml
 sources:
-    mapzen:
-        type: TopoJSON
-        url:  tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-JUsa0Gc
     billboard:
         type: GeoJSON
         url: //52.70.150.13/data/water.json
@@ -208,20 +204,20 @@ layers:
                 order: 0
                 color: [0.106, 0.106, 0.106]
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             billboardPly:
                 order: 1
                 color: [0.333, 0.333, 0.333]
     boundaries:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             billboardLns:
                 order: 2
                 color: white
                 width: 1px
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             billboardLns:
                 order: 3

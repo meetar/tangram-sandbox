@@ -1,18 +1,13 @@
 author: Patricio Gonzalez Vivo (@patriciogv) - 2016 
 
 import:
+    - nextzen-datasource.yaml
     - https://tangrams.github.io/blocks/color/tools.yaml
     - https://tangrams.github.io/blocks/geometry/projections.yaml
     - https://tangrams.github.io/blocks/patterns/grid.yaml
     - https://tangrams.github.io/blocks/lines/dash.yaml
     - https://tangrams.github.io/blocks/shapes/cross.yaml
     
-sources:
-    mapzen:
-        type: TopoJSON
-        url:  https:tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        url_params:
-            api_key: vector-tiles-Nhm6Mkg
         rasters: [normals, elevation]
     normals:
         type: Raster
@@ -60,13 +55,13 @@ global:
         
 layers:
     water:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             water:
                 order: global.order
                 color: [.1,.1,.1]
     earth:
-        data: { source: mapzen }
+        data: { source: nextzen }
         draw:
             earth:
                 order: global.order
@@ -76,7 +71,7 @@ layers:
                 color: white
                 width: 2px
     roads:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { not: { kind: [rail, ferry] } }
         draw:
             roads:
@@ -102,7 +97,7 @@ layers:
                 roads:
                     order: global.order
     boundaries:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: { $zoom: {max: 15}}
         draw:
             lines-dash:
@@ -110,7 +105,7 @@ layers:
                 color: white
                 width: 1px
     places:
-        data: { source: mapzen }
+        data: { source: nextzen }
         filter: 
             any:
                 - { capital: yes }
